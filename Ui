@@ -118,7 +118,7 @@ end
 function Library:change_theme(toTheme)
 	Library.CurrentTheme = toTheme
 	local c = self:lighten(toTheme.Tertiary, 20)
-	Library.DisplayName.Text = "Welcome, <font color='rgb(" ..  math.floor(c.R*255) .. "," .. math.floor(c.G*255) .. "," .. math.floor(c.B*255) .. ")'> <b>" .. LocalPlayer.DisplayName .. "</b> </font>"
+	Library.DisplayName.Text = "Chào Mừng, <font color='rgb(" ..  math.floor(c.R*255) .. "," .. math.floor(c.G*255) .. "," .. math.floor(c.B*255) .. ")'> <b>" .. LocalPlayer.DisplayName .. "</b> </font>"
 	for color, objects in next, Library.ThemeObjects do
 		local themeColor = Library.CurrentTheme[color]
 		for _, obj in next, objects do
@@ -883,8 +883,8 @@ function Library:create(options)
 	settingsTab:_theme_selector()
 
 	settingsTab:keybind{
-		Name = "Toggle Key",
-		Description = "Key to show/hide the UI.",
+		Name = "key",
+		Description = "Hiển thị Giao diện / ẩn giao diện người dùng.",
 		Keybind = Enum.KeyCode.V,
 		Callback = function()
 			self.Toggled = not self.Toggled
@@ -894,7 +894,7 @@ function Library:create(options)
 
 	settingsTab:toggle{
 		Name = "Lock Dragging",
-		Description = "Makes sure you can't drag the UI outside of the window.",
+		Description = "Đảm bảo bạn không thể kéo giao diện người dùng ra ngoài cửa sổ.",
 		StartingState = true,
 		Callback = function(state)
 			Library.LockDragging = state
@@ -903,7 +903,7 @@ function Library:create(options)
 
 	settingsTab:slider{
 		Name = "UI Drag Speed",
-		Description = "How smooth the dragging looks.",
+		Description = ".",
 		Max = 20,
 		Default = 14,
 		Callback = function(value)
@@ -928,7 +928,7 @@ end
 function Library:notification(options)
 	options = self:set_defaults({
 		Title = "Notification",
-		Text = "Your character has been reset.",
+		Text = "Nhân vật của bạn đã được reset.",
 		Duration = 3,
 		Callback = function() end
 	}, options)
